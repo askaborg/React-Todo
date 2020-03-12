@@ -1,28 +1,34 @@
 import React from 'react'
 
-import { Todo, TodoList } from '../components'
-
 class TodoForm extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { chore: '' }
+        this.state = { chore:'' }
     }
 
     handleChanges = e => this.setState({ chore: e.target.value })
 
     handleAddChore = e => {
-        e.preventDefault()
-        this.props.addChore(this.state.chore)
-        this.state.chore = ''
-    }
+        const { addChore } = this.props
+        const { chore } = this.state
 
+        e.preventDefault()
+        addChore(chore)
+        this.setState({ chore:'' })
+    }
+    
     render() {
+        const { handleAddChore, handleChanges } = this
+        const { chore } = this.state
+        const { clearCompleted } = this.props
+
         return (
-            <form onSubmit={this.handleAddChore}>
-                <input type='text' placeholder='...todo' value={this.state.chore} 
-                    onChange={this.handleChanges}
+            <form onSubmit={handleAddChore}>
+                <input type='text' placeholder='...todo' value={chore} 
+                    onChange={handleChanges}
                 />
                 <button>Add Todo</button>
+                <button onClick={clearCompleted}>Clear Completed</button>
             </form>
         )
     }

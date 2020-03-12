@@ -1,12 +1,14 @@
 import React from 'react'
 
 const Todo = props => {
-    const {  chore, toggleCompleted } = props
+    const { toggleCompleted } = props
+    const { task, id, completed } = props.chore
+
     return (
-        <div className={`chore${chore.completed ? " completed" : ""}`}
-            onClick={e => toggleCompleted(chore.id)}
+        <div className={`chore${completed ? " completed" : ""}`}
+            onClick={e => toggleCompleted(id)}
         >
-            <p>{chore.name}</p>
+            <p>{task}</p>
         </div>
     )
 }

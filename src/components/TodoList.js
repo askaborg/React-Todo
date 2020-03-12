@@ -8,12 +8,11 @@ const TodoList = props => {
     const { choreList, addChore, toggleCompleted, clearCompleted } = props
     return (
         <>
-            {props.choreList.map(chore => (
+            {choreList.map(chore => (
                 <Todo key={chore.id} chore={chore} toggleCompleted={toggleCompleted} />
             ))}
             
             <TodoForm addChore={addChore} clearCompleted={clearCompleted} />
-            <button onClick={clearCompleted}>Clear Completed</button>
         </>
     )
 }
