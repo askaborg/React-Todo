@@ -1,0 +1,8 @@
+.chore {
+    background-color: white;
+    cursor: not-allowed;
+  }
+  
+  .chore.completed {
+    text-decoration: line-through;
+  }
